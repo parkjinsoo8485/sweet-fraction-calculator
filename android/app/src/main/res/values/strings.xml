@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">달콤 분수 계산기</string>
+    <string name="title_activity_main">달콤 분수 계산기</string>
+    <string name="package_name">com.sweetfraction.calculator</string>
+    <string name="custom_url_scheme">com.sweetfraction.calculator</string>
+</resources>

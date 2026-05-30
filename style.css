@@ -1,0 +1,1503 @@
+/* ==========================================================================
+   분수 마스터 (Fraction Master) - Premium CSS Style Guide
+   파스텔 다중 테마, Glassmorphism, 화려한 마이크로 애니메이션 및 완벽 반응형 CSS
+   ========================================================================== */
+
+/* 1. 디자인 시스템 토큰 & 테마 정의 */
+:root {
+    --transition-speed: 0.3s;
+    --border-radius-lg: 24px;
+    --border-radius-md: 16px;
+    --border-radius-sm: 10px;
+    
+    /* 기본 솜사탕 캔디 테마 (Theme Candy) */
+    --theme-bg-gradient: linear-gradient(135deg, #FDEFF4 0%, #E8E5FF 100%);
+    --header-bg: linear-gradient(90deg, #FF9ebb 0%, #B8B5FF 100%);
+    --panel-bg: rgba(255, 255, 255, 0.75);
+    --panel-border: rgba(255, 255, 255, 0.6);
+    --text-main: #2D3748;
+    --text-muted: #718096;
+    --primary-color: #FF7597;
+    --primary-hover: #E05E7F;
+    --secondary-color: #A29BFE;
+    --secondary-hover: #8F85FF;
+    --accent-color: #FFD200;
+    --danger-color: #FF6B6B;
+    --success-color: #4BD37B;
+    --shadow-main: 0 10px 30px rgba(184, 181, 255, 0.25);
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* 밤하늘 우주 테마 (Theme Space) */
+body.theme-space {
+    --theme-bg-gradient: linear-gradient(135deg, #0f0c20 0%, #15102a 50%, #201a40 100%);
+    --header-bg: linear-gradient(90deg, #6C5CE7 0%, #00CEC9 100%);
+    --panel-bg: rgba(26, 21, 52, 0.7);
+    --panel-border: rgba(108, 92, 231, 0.25);
+    --text-main: #E2E8F0;
+    --text-muted: #A0AEC0;
+    --primary-color: #00CEC9;
+    --primary-hover: #00B5B5;
+    --secondary-color: #6C5CE7;
+    --secondary-hover: #5B4BC4;
+    --accent-color: #FDCB6E;
+    --danger-color: #FF7675;
+    --success-color: #00B894;
+    --shadow-main: 0 10px 30px rgba(0, 206, 201, 0.15);
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 요정숲 테마 (Theme Forest) */
+body.theme-forest {
+    --theme-bg-gradient: linear-gradient(135deg, #F0F7F4 0%, #E2EFE0 100%);
+    --header-bg: linear-gradient(90deg, #78B159 0%, #FDCC58 100%);
+    --panel-bg: rgba(255, 255, 255, 0.8);
+    --panel-border: rgba(120, 177, 89, 0.3);
+    --text-main: #2C3E29;
+    --text-muted: #5C6E58;
+    --primary-color: #78B159;
+    --primary-hover: #679E4B;
+    --secondary-color: #FDCC58;
+    --secondary-hover: #E5B749;
+    --accent-color: #FF8533;
+    --danger-color: #E74C3C;
+    --success-color: #2ECC71;
+    --shadow-main: 0 10px 30px rgba(120, 177, 89, 0.25);
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+/* 2. 베이스 리셋 & 스크롤 설정 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Outfit', 'Nanum Square Round', 'Gaegu', sans-serif;
+    color: var(--text-main);
+    background: var(--theme-bg-gradient);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+    transition: background 0.5s ease;
+}
+
+/* 스크롤바 커스텀 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* 3. 전체 레이아웃 구성 */
+.app-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 4. 헤더 영역 */
+.app-header {
+    background: var(--header-bg);
+    border-radius: var(--border-radius-md);
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-main);
+    margin-bottom: 16px;
+    transition: all 0.5s ease;
+    color: white;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-emoji {
+    font-size: 32px;
+    animation: wobble 2.5s infinite ease-in-out;
+    display: inline-block;
+}
+
+.logo-title {
+    font-family: 'Gaegu', cursive;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.85;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 5. 인터랙티브 컨트롤 엘리먼트 */
+.icon-btn {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-size: 18px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    outline: none;
+}
+
+.icon-btn:hover {
+    transform: scale(1.15) rotate(8deg);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.theme-select-container {
+    position: relative;
+}
+
+.theme-select {
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 8px 14px;
+    border-radius: var(--border-radius-sm);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.theme-select:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.theme-select option {
+    color: #2D3748;
+    background: white;
+}
+
+/* 6. 유저 통계 대시보드 */
+.user-stats-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.stat-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    border-radius: var(--border-radius-sm);
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--panel-border);
+}
+
+.gold-stat {
+    background: var(--panel-bg);
+}
+
+.gold-stat .stat-value {
+    color: #E2B200;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+body.theme-space .gold-stat .stat-value {
+    color: #FDCB6E;
+}
+
+.score-stat {
+    background: var(--panel-bg);
+}
+
+.score-stat .stat-value {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+/* 7. 프리미엄 Glassmorphism 패널 */
+.glass-panel {
+    background: var(--panel-bg);
+    border: 1.5px solid var(--panel-border);
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-radius: var(--border-radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-main);
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
+}
+
+.glass-panel:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+body.theme-space .glass-panel:hover {
+    box-shadow: 0 15px 35px rgba(0, 206, 201, 0.08);
+}
+
+.card-title {
+    font-family: 'Gaegu', cursive;
+    font-size: 22px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 8. 탭 컨트롤 버튼 구조 */
+.app-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.tab-btn {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 10px;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--text-muted);
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.tab-btn:hover {
+    transform: translateY(-3px);
+    color: var(--text-main);
+}
+
+.tab-btn.active {
+    background: var(--primary-color);
+    color: white !important;
+    border-color: transparent;
+    transform: scale(1.03) translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 117, 151, 0.3);
+}
+
+body.theme-space .tab-btn.active {
+    box-shadow: 0 8px 20px rgba(0, 206, 201, 0.3);
+}
+
+body.theme-forest .tab-btn.active {
+    box-shadow: 0 8px 20px rgba(120, 177, 89, 0.3);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* 9. 분수 입력 레이아웃 */
+.fraction-input-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.fraction-input-block {
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: var(--border-radius-md);
+    padding: 16px;
+    border: 1px dashed var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.theme-space .fraction-input-block {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.block-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.fraction-fields {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.whole-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vulgar-fields {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 65px;
+}
+
+.fraction-bar {
+    width: 100%;
+    height: 4px;
+    background: #4A4A4A;
+    margin: 8px 0;
+    border-radius: 2px;
+}
+
+body.theme-space .fraction-bar {
+    background: #E2E8F0;
+}
+
+.num-input {
+    width: 68px;
+    height: 52px;
+    border: 2px solid var(--secondary-color);
+    border-radius: var(--border-radius-sm);
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    outline: none;
+    font-family: inherit;
+    background: var(--panel-bg);
+    color: var(--text-main);
+    transition: all 0.25s;
+}
+
+.num-input:focus {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 117, 151, 0.2);
+}
+
+.whole-field .num-input {
+    width: 64px;
+}
+
+.input-sub {
+    font-size: 10px;
+    margin-top: 4px;
+    color: var(--text-muted);
+    font-weight: bold;
+}
+
+/* 연산 부호 크기 조율 */
+.operator-selector-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.operator-select {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid var(--primary-color);
+    background: var(--panel-bg);
+    color: var(--text-main);
+    border-radius: var(--border-radius-sm);
+    outline: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-soft);
+    font-family: inherit;
+    transition: all 0.3s;
+}
+
+.operator-select:hover {
+    transform: scale(1.08);
+}
+
+/* 10. 버튼 일반 가이드 */
+.btn {
+    border: none;
+    outline: none;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 15px rgba(255, 117, 151, 0.3);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: var(--secondary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #E55757;
+}
+
+.btn-clear {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    color: var(--text-muted);
+}
+
+.btn-clear:hover {
+    color: var(--text-main);
+    background: rgba(255,255,255,0.9);
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* 11. 결과 화면 UI */
+.result-display-area {
+    margin-top: 10px;
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.result-box {
+    text-align: center;
+}
+
+.result-fraction-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 46px;
+    font-weight: 800;
+    margin: 20px 0;
+    gap: 16px;
+}
+
+.box-title {
+    font-family: 'Gaegu', cursive;
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--primary-color);
+}
+
+/* 분수 렌더링용 스타일 */
+.render-whole {
+    font-size: 52px;
+    margin-right: 6px;
+}
+
+.render-vulgar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.render-num {
+    padding-bottom: 4px;
+}
+
+.render-denom {
+    padding-top: 4px;
+    border-top: 4px solid var(--text-main);
+}
+
+body.theme-space .render-denom {
+    border-top-color: var(--text-main);
+}
+
+.result-equals {
+    font-size: 32px;
+    margin: 0 10px;
+}
+
+.result-text-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: normal;
+    margin-left: 6px;
+}
+
+/* 12. 시각 교구 캔버스 레이아웃 */
+.visualizer-container {
+    background: var(--panel-bg);
+}
+
+.visualizer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.visual-mode-tabs {
+    display: flex;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 4px;
+    border-radius: var(--border-radius-sm);
+    gap: 4px;
+}
+
+body.theme-space .visual-mode-tabs {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.mode-tab-btn {
+    border: none;
+    outline: none;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--text-muted);
+    background: transparent;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.mode-tab-btn.active {
+    background: var(--panel-bg);
+    color: var(--text-main);
+    box-shadow: var(--shadow-soft);
+}
+
+.canvas-grid-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.canvas-card {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: var(--border-radius-md);
+    padding: 16px;
+    border: 1px solid var(--panel-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 240px;
+}
+
+body.theme-space .canvas-card {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.canvas-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 11px;
+    font-weight: bold;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.6);
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+body.theme-space .canvas-tag {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.tag-result {
+    background: var(--accent-color) !important;
+    color: #2D3748 !important;
+}
+
+.fraction-canvas {
+    width: 210px;
+    height: 140px;
+    margin-top: 12px;
+}
+
+.canvas-operator-sign, .canvas-equals-sign {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--text-muted);
+}
+
+/* 13. 단계별 학습 설명 */
+.steps-flow-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.step-card {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--border-radius-md);
+    padding: 16px 20px;
+    border-left: 5px solid var(--secondary-color);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    animation: fadeInSlideRight 0.3s ease-out;
+}
+
+body.theme-space .step-card {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.step-card-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.step-card-desc {
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.step-card-expr {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid var(--panel-border);
+    margin-top: 4px;
+}
+
+body.theme-space .step-card-expr {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* 14. 퀴즈 UI */
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quiz-score-indicator {
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.combo-bubble {
+    background: var(--accent-color);
+    color: #2D3748;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    animation: popBubble 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate;
+}
+
+.quiz-card-body {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: var(--border-radius-md);
+    padding: 20px;
+    border: 1px solid var(--panel-border);
+    text-align: center;
+}
+
+body.theme-space .quiz-card-body {
+    background: rgba(0,0,0,0.15);
+}
+
+.quiz-question-title {
+    font-family: 'Gaegu', cursive;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.quiz-question-desc {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.quiz-visual-box {
+    display: flex;
+    justify-content: center;
+    margin: 12px 0;
+}
+
+.quiz-fraction-canvas {
+    width: 240px;
+    height: 160px;
+}
+
+.quiz-compare-visuals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin: 16px 0;
+}
+
+.compare-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.compare-canvas {
+    width: 160px;
+    height: 120px;
+}
+
+.compare-vs {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary-color);
+    animation: heartbeat 1.5s infinite;
+}
+
+.quiz-options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.option-btn {
+    background: var(--panel-bg);
+    border: 2px solid var(--panel-border);
+    border-radius: var(--border-radius-sm);
+    padding: 18px;
+    font-size: 22px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--text-main);
+    box-shadow: var(--shadow-soft);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.option-btn:hover {
+    transform: translateY(-4px);
+    border-color: var(--secondary-color);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.option-btn:active {
+    transform: scale(0.96);
+}
+
+/* 정답/오답 피드백 팝업 알림 */
+.feedback-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+    padding: 24px 36px;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 3px solid var(--success-color);
+}
+
+body.theme-space .feedback-alert {
+    background: #1A1534;
+    border-color: var(--success-color);
+}
+
+.feedback-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.feedback-icon {
+    font-size: 40px;
+    animation: spin 0.8s ease-out;
+}
+
+.feedback-text-wrap h4 {
+    font-family: 'Gaegu', cursive;
+    font-size: 24px;
+    color: var(--success-color);
+}
+
+.feedback-text-wrap p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* 15. 스티커북 레이아웃 */
+.sticker-workspace-layout {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 20px;
+}
+
+.sticker-board-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.board-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+/* 드래그 앤 드롭 영역 */
+.sticker-play-zone {
+    background: #FFFCEB;
+    border: 2.5px dashed #FFD485;
+    border-radius: var(--border-radius-md);
+    flex: 1;
+    min-height: 380px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
+}
+
+body.theme-space .sticker-play-zone {
+    background: #0D091B;
+    border-color: #6C5CE7;
+}
+
+/* 캔버스 위 스티커 인스턴스 */
+.placed-sticker {
+    position: absolute;
+    cursor: move;
+    font-size: 42px;
+    user-select: none;
+    display: inline-block;
+    padding: 6px;
+    border: 2px dashed transparent;
+    border-radius: 8px;
+    transition: border-color 0.2s, transform 0.1s;
+    touch-action: none; /* 모바일 드래그 제어 브라우저 스크롤 가드 */
+}
+
+.placed-sticker:hover {
+    border-color: rgba(0,0,0,0.25);
+    background: rgba(255,255,255,0.4);
+}
+
+body.theme-space .placed-sticker:hover {
+    border-color: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.05);
+}
+
+/* 선택되었을 때의 조작 도구 표시 */
+.placed-sticker.selected {
+    border-color: var(--primary-color) !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+body.theme-space .placed-sticker.selected {
+    background: rgba(26, 21, 52, 0.9) !important;
+}
+
+.sticker-delete-btn {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    background: var(--danger-color);
+    color: white;
+    font-size: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.placed-sticker.selected .sticker-delete-btn {
+    display: flex;
+}
+
+/* 스티커 보관함 / 샵 판넬 */
+.sticker-collection-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.store-tabs {
+    display: flex;
+    background: rgba(0,0,0,0.04);
+    padding: 4px;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 16px;
+    gap: 4px;
+}
+
+body.theme-space .store-tabs {
+    background: rgba(255,255,255,0.05);
+}
+
+.store-tab-btn {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--text-muted);
+    background: transparent;
+    border-radius: 6px;
+    transition: all 0.25s;
+}
+
+.store-tab-btn.active {
+    background: var(--panel-bg);
+    color: var(--text-main);
+    box-shadow: var(--shadow-soft);
+}
+
+/* 내 스티커 백 보관함 그리드 */
+.stickers-inventory-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+    gap: 12px;
+    overflow-y: auto;
+    max-height: 380px;
+    padding: 4px;
+}
+
+.inventory-item {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1.5px solid var(--panel-border);
+    border-radius: var(--border-radius-sm);
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    cursor: pointer;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body.theme-space .inventory-item {
+    background: rgba(255,255,255,0.02);
+}
+
+.inventory-item:hover {
+    transform: scale(1.12) rotate(4deg);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+/* 상점 아이템 그리드 */
+.stickers-shop-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    max-height: 380px;
+    padding: 4px;
+}
+
+.shop-item-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--panel-border);
+    padding: 10px 14px;
+    border-radius: var(--border-radius-sm);
+    transition: all 0.2s;
+}
+
+body.theme-space .shop-item-card {
+    background: rgba(255,255,255,0.02);
+}
+
+.shop-item-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.shop-item-emoji {
+    font-size: 34px;
+}
+
+.shop-item-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.shop-item-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.shop-item-desc {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.shop-item-price-badge {
+    background: #FFF8DB;
+    color: #C69200;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 2px;
+    display: inline-block;
+    align-self: flex-start;
+}
+
+body.theme-space .shop-item-price-badge {
+    background: rgba(253, 203, 110, 0.15);
+    color: #FDCB6E;
+}
+
+.btn-buy-sticker {
+    padding: 8px 14px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+.shop-item-card.owned {
+    opacity: 0.65;
+}
+
+.shop-item-card.owned .btn-buy-sticker {
+    background: var(--text-muted);
+    cursor: default;
+    pointer-events: none;
+}
+
+/* 16. 푸터 */
+.app-footer-brand {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: auto;
+}
+
+/* 17. 애니메이션 정의 효과 */
+@keyframes wobble {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-8deg) scale(1.05); }
+    75% { transform: rotate(8deg) scale(1.05); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInSlideRight {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes popBubble {
+    from { transform: scale(1); }
+    to { transform: scale(1.08); }
+}
+
+@keyframes popIn {
+    0% { transform: translate(-50%, -50%) scale(0.7); opacity: 0; }
+    80% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg) scale(0.5); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* 18. 반응형 미디어 쿼리 가이드 */
+@media (max-width: 800px) {
+    .sticker-workspace-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .canvas-grid-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .canvas-operator-sign, .canvas-equals-sign {
+        transform: rotate(90deg);
+        margin: 4px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .fraction-input-area {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .fraction-input-block {
+        width: 100%;
+    }
+    
+    .operator-selector-container {
+        margin: 6px 0;
+    }
+    
+    .app-header {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .user-stats-bar {
+        font-size: 13px;
+    }
+
+    .quiz-options-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .app-tabs {
+        flex-direction: row;
+        font-size: 13px;
+    }
+
+    .tab-btn .tab-text {
+        display: none; /* 모바일에서는 텍스트 숨기고 이모지만 표시하여 터치 영역 확보 */
+    }
+    
+    .tab-btn {
+        padding: 12px;
+    }
+    
+    .tab-btn .tab-icon {
+        font-size: 20px;
+    }
+}
+
+/* ==========================================================================
+   아동 친화적 UI 보완 - 스핀 조절 버튼, 캐릭터 가이드 및 스티커 테마 일러스트 스타일
+   ========================================================================== */
+
+.spin-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 68px;
+}
+
+.spin-btn {
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 24px;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.spin-up {
+    border-radius: 8px 8px 0 0;
+}
+
+.spin-down {
+    border-radius: 0 0 8px 8px;
+}
+
+.spin-btn:hover {
+    background: var(--primary-color);
+}
+
+.spin-btn:active {
+    transform: scale(0.85);
+}
+
+/* 스핀 그룹 연동을 위한 인풋 테두리 결합 스타일 보정 */
+.spin-group .num-input {
+    border-radius: 0 !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+/* 🐼 판다 가이드 캐릭터 웅성웅성 말풍선 스타일 */
+.character-guide-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 16px 0;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1.5px solid var(--panel-border);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-soft);
+    animation: floatPanda 3s ease-in-out infinite alternate;
+}
+
+body.theme-space .character-guide-box {
+    background: rgba(26, 21, 52, 0.55);
+}
+
+.character-guide-box.compact {
+    margin: 10px auto;
+    max-width: 500px;
+    padding: 8px 16px;
+}
+
+.character-avatar-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.character-avatar {
+    font-size: 42px;
+    user-select: none;
+}
+
+.character-guide-box.compact .character-avatar {
+    font-size: 34px;
+}
+
+.character-shadow {
+    width: 32px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 50%;
+    margin-top: 1px;
+    animation: shadowScale 3s ease-in-out infinite alternate;
+}
+
+.character-guide-box.compact .character-shadow {
+    width: 24px;
+    height: 4px;
+}
+
+.character-bubble {
+    flex: 1;
+    position: relative;
+    background: white;
+    border: 2px solid var(--secondary-color);
+    border-radius: 16px;
+    padding: 10px 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+body.theme-space .character-bubble {
+    background: #1A1534;
+    border-color: var(--primary-color);
+}
+
+/* 말풍선 꼬리 (왼쪽 지향) */
+.character-bubble::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px 12px 6px 0;
+    border-style: solid;
+    border-color: transparent var(--secondary-color) transparent transparent;
+}
+
+body.theme-space .character-bubble::before {
+    border-color: transparent var(--primary-color) transparent transparent;
+}
+
+.character-bubble::after {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 5px 10px 5px 0;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+}
+
+body.theme-space .character-bubble::after {
+    border-color: transparent #1A1534 transparent transparent;
+}
+
+.character-name {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 2px;
+}
+
+body.theme-space .character-name {
+    color: var(--primary-color);
+}
+
+.character-speech {
+    font-size: 13.5px;
+    font-weight: bold;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+@keyframes floatPanda {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+@keyframes shadowScale {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(0.75); opacity: 0.35; }
+}
+
+/* 🎨 스티커 캔버스 배경 테마별 동화 일러스트화 개편 */
+body.theme-candy .sticker-play-zone {
+    background: radial-gradient(circle at 30% 20%, #FFFCEB 0%, #FFF3F7 50%, #EBF3FF 100%) !important;
+    background-size: 40px 40px;
+    background-image: 
+        radial-gradient(circle, rgba(255, 117, 151, 0.08) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 30% 20%, #FFFCEB 0%, #FFF3F7 50%, #EBF3FF 100%) !important;
+}
+
+body.theme-space .sticker-play-zone {
+    background: linear-gradient(180deg, #0A0718 0%, #15102A 100%) !important;
+    background-image: 
+        radial-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.15) 1.5px, transparent 40px),
+        radial-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.1) 1px, transparent 35px),
+        radial-gradient(rgba(0, 206, 201, 0.2), rgba(0, 206, 201, 0.03) 3px, transparent 60px) !important;
+    background-size: 120px 120px, 90px 90px, 160px 160px !important;
+    background-position: 0 0, 40px 60px, 80px 20px !important;
+}
+
+body.theme-forest .sticker-play-zone {
+    background: linear-gradient(135deg, #F0F9EE 0%, #D8EED7 100%) !important;
+    background-image: 
+        radial-gradient(circle, rgba(120, 177, 89, 0.09) 2px, transparent 2px) !important;
+    background-size: 32px 32px !important;
+}
+
