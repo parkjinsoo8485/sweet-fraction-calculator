@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "북마크 자동 분류기 (Bookmark Reorganizer)",
+  "version": "1.0",
+  "description": "북마크에서 중복 및 정크 링크를 필터링하고 계층화된 폴더(대분류-소분류)로 깔끔하게 정리해 줍니다.",
+  "permissions": [
+    "bookmarks",
+    "storage",
+    "notifications"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "북마크 정리하기"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

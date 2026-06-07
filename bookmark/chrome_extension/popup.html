@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>북마크 자동 분류기</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="glass-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <span class="logo-icon">📂</span>
+        <h1>Bookmark Reorganizer</h1>
+      </div>
+      <p class="subtitle">스마트 북마크 재분류 & 정크 정리 도구</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <!-- Options Panel -->
+      <section class="options-panel" id="optionsPanel">
+        <div class="section-title">정리 옵션 설정</div>
+        
+        <div class="option-row">
+          <div class="option-info">
+            <span class="option-label">새 폴더에 정리</span>
+            <span class="option-desc">기존 북마크를 보존하고 새 분류 폴더를 생성합니다.</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="optNewFolder" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="option-row">
+          <div class="option-info">
+            <span class="option-label">데드링크 검증 (CORS 우회)</span>
+            <span class="option-desc">접속이 완전히 끊긴 링크를 확인해 삭제합니다 (속도 저하 발생).</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="optCheckDead">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        
+        <button id="btnStart" class="btn-primary">자동 분류 시작</button>
+      </section>
+
+      <!-- Progress Panel -->
+      <section class="progress-panel hidden" id="progressPanel">
+        <div class="progress-header">
+          <div class="progress-status" id="progressStatus">북마크 분석 중...</div>
+          <div class="progress-percent" id="progressPercent">0%</div>
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-subtext" id="progressSubtext">스캔을 준비하는 중입니다.</div>
+      </section>
+
+      <!-- Result Panel -->
+      <section class="result-panel hidden" id="resultPanel">
+        <div class="success-banner">
+          <span class="success-icon">✨</span>
+          <div class="success-text">
+            <h2>분류 완료!</h2>
+            <p id="resultSummary">총 0개의 북마크가 정리되었습니다.</p>
+          </div>
+        </div>
+
+        <div class="section-title">📊 분류 요약 보고서</div>
+        <div class="stat-list" id="statList">
+          <!-- JS로 동적으로 생성됨 -->
+        </div>
+
+        <button id="btnReset" class="btn-secondary">처음으로 돌아가기</button>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Bookmark Reorganizer v1.0 • Manifest V3</p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
